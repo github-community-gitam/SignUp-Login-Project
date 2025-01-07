@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration & Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1c1c1c;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #f0f0f0;
+        }
+        .container {
+            background: #2b2b2b;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #ffffff;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+            font-size: 14px;
+            color: #d3d3d3;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #4d4d4d;
+            border-radius: 4px;
+            background-color: #333333;
+            color: #ffffff;
+        }
+        input::placeholder {
+            color: #aaaaaa;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            background-color: #4caf50;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            text-align: center;
+            margin-top: 10px;
+            color: #ff4d4d;
+        }
+        .success {
+            color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 id="page-title">Register</h2>
+        <form id="form">
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password" required>
+
+            <button type="submit" id="submit-btn">Register</button>
+            <p class="message" id="message"></p>
+        </form>
+    </div>
+
+    <script>
+        // Selecting elements
+        const form = document.getElementById('form');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const message = document.getElementById('message');
+        const pageTitle = document.getElementById('page-title');
+        const submitBtn = document.getElementById('submit-btn');
+
+        // State to track mode (register/login)
+        let isRegistering = true;
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = emailInput.value.trim();
+            const password = passwordInput.value.trim();
+
+            if (isRegistering) {
+                // Registration logic
+                if (localStorage.getItem(email)) {
+                    message.textContent = 'Email already registered!';
+                    message.classList.remove('success');
+                } else {
+                    localStorage.setItem(email, password);
+                    message.textContent = 'Registration successful!';
+                    message.classList.add('success');
+                    form.reset();
+                }
+            } else {
+                // Login logic
+                const storedPassword = localStorage.getItem(email);
+                if (!storedPassword) {
+                    message.textContent = 'Username not registered!';
+                    message.classList.remove('success');
+                } else if (storedPassword === password) {
+                    message.textContent = 'Login successful! Redirecting...';
+                    message.classList.add('success');
+                    setTimeout(() => {
+                        // Redirect to secured page
+                        window.location.href = 'secured.html';
+                    }, 1000);
+                } else {
+                    message.textContent = 'Incorrect password!';
+                    message.classList.remove('success');
+                }
+            }
+        });
+
+        // Toggle between Register and Login mode
+        const toggleMode = () => {
+            isRegistering = !isRegistering;
+            pageTitle.textContent = isRegistering ? 'Register' : 'Login';
+            submitBtn.textContent = isRegistering ? 'Register' : 'Login';
+            message.textContent = '';
+            form.reset();
+        };
+
+        // Adding a toggle link
+        const toggleLink = document.createElement('p');
+        toggleLink.style.textAlign = 'center';
+        toggleLink.style.marginTop = '10px';
+        toggleLink.innerHTML = '<a href="#" style="color: #4caf50; text-decoration: none;">Switch to Login</a>';
+        toggleLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleMode();
+            toggleLink.innerHTML = isRegistering ? '<a href="#" style="color: #4caf50; text-decoration: none;">Switch to Login</a>' : '<a href="#" style="color: #4caf50; text-decoration: none;">Switch to Register</a>';
+        });
+        form.appendChild(toggleLink);
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+     
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <style>
+    .i{
+        width:100px;
+        height:150px;
+    }
+  </style>
+</head>
+  <body>
+      <div id="sectionHome">
+      <div class="container">
+    <div class="row">
+     
+       <h1 class="  p-3 col-12 col-md-12">welcome to cheeeseburgers!!!</h1>
+        <p class=" p-3 col-12 col-md-7">We are here to serve youu</p>
+        <div class=" p-3 col-12 col-md-5">
+        <img src="https://res.cloudinary.com/dynil6zjy/image/upload/v1736065889/grngmi3mwvk6stwu3pck.jpg" class="i ">
+    
+</div>
+ </div>
+  </div>
+   <form action="action_page.php" method="POST">
+    <div class="p-3">
+    <label for="email">email id:</label>
+    <input type="email" id="email" name="email" required="">
+</div>
+<br>
+<div class="p-3">
+    <label for="password">Password:</label>
+    <input type="password" id="pass" name="pass"  maaxlenght="14" required="" >
+</div>
+<div class="p-3">
+    <input type="reset">
+
+    <input type="submit">
+</div>
+   </form>
+   <div class="p-3"><h1>New to page!!! create an account, let's have fun''/D</h1>
+   <br>
+    <button onclick="display('section1')">create an account</button></div>
+    </div>
+    <div id="section1">
+         <form action="action_page.php" method="POST">
+    <div class="p-3">
+    <label for="email">email id:</label>
+    <input type="email" id="email" name="email" required>
+</div>
+<br>
+<div class="p-3">
+    <label for="password">Password:</label>
+    <input type="password" id="pass" name="pass"  maaxlenght="14" required>
+</div>
+<div class="p-3">
+    <input type="reset">
+
+    <input type="submit" onclick="display('sections')">
+    
+</div>
+   </form>
+        
+    </div>
+    <div id="sections">
+<h1 class="p-3">success</h1>
+<button onclick="display('sectionHome')">back</button>
+    </div>
+ <script
+      type="text/javascript"
+      src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/js/ccbp-ui-kit.js"
+    ></script>
+  </body>
+</html>

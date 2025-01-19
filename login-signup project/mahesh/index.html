@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login and Sign-Up</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Registration Form -->
+      <div class="form-container" id="register-form">
+        <h2>Sign Up</h2>
+        <form id="registration-form">
+          <input
+            type="email"
+            id="reg-email"
+            placeholder="Enter your email"
+            required
+          />
+          <input
+            type="password"
+            id="reg-password"
+            placeholder="Enter your password"
+            required
+          />
+          <button type="submit">Register</button>
+        </form>
+        <p id="reg-message"></p>
+        <a href="#" onclick="toggleForm('login')"
+          >Already have an account? Login here.</a
+        >
+      </div>
+
+      <!-- Login Form -->
+      <div class="form-container" id="login-form" style="display: none">
+        <h2>Login</h2>
+        <form id="login-form">
+          <input
+            type="email"
+            id="login-email"
+            placeholder="Enter your email"
+            required
+          />
+          <input
+            type="password"
+            id="login-password"
+            placeholder="Enter your password"
+            required
+          />
+          <button type="submit">Login</button>
+        </form>
+        <p id="login-message"></p>
+        <a href="#" onclick="toggleForm('register')"
+          >Don't have an account? Sign up here.</a
+        >
+      </div>
+
+      <!-- Secured Page  -->
+      <div class="secured-page" id="secured-page" style="display: none">
+        <h2>Welcome to your secured page!</h2>
+        <p id="welcome-message"></p>
+        <button onclick="logout()">Logout</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
